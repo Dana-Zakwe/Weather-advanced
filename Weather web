@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        #city-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+
+        #search-button {
+            padding: 10px 20px;
+            background-color: #ff69b4; /* Pink color */
+            border: none;
+            border-radius: 0 4px 4px 0;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #search-button:hover {
+            background-color: #ff85c1;
+        }
+
+        .weather-info {
+            text-align: left;
+        }
+
+        .city-temperature {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        #city-name {
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        #temperature {
+            font-weight: bold;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        #weather-emoji {
+            font-size: 24px;
+            margin-left: 8px;
+        }
+
+        .weather-details {
+            font-weight: 300;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .weather-details .highlight {
+            color: red;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            color: #777;
+        }
+
+        footer a {
+            color: #ff69b4;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            .city-temperature {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #temperature {
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="search-form">
+            <input type="text" id="city-input" placeholder="Enter a city" required>
+            <button type="submit" id="search-button">Search</button>
+        </form>
+        <div class="weather-info">
+            <div class="city-temperature">
+                <span id="city-name"><strong>City</strong></span>
+                <span id="temperature"><strong>24°C</strong><span id="weather-emoji">☀️</span></span>
+            </div>
+            <div class="weather-details">
+                Saturday 15:32. moderate rain Humidity: <span class="highlight">87%</span> Wind <span class="highlight">7.2Km/h</span>
+            </div>
+        </div>
+    </div>
+    <footer>
+        The project is created by Andiswa Zakwe and is on <a href="https://github.com/Dana-Zakwe/Weather" target="_blank">GitHub</a>.
+    </footer>
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form from submitting
+            const cityInput = document.getElementById('city-input').value.trim();
+            if(cityInput !== "") {
+                document.getElementById('city-name').innerHTML = `<strong>${cityInput}</strong>`;
+                // Optionally, you could update other data here based on the city
+                // For example, fetching real weather data from an API
+                // Currently, temperature and other details remain static
+            }
+        });
+    </script>
+</body>
+</html>
